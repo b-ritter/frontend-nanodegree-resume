@@ -11,14 +11,16 @@ var summary = 'After nine years as a graphic design generalist in New York,'+
 var bio = {
   "name": "Benjamin Ritter",
   "role": "Front-end Developer",
-  "portrait": "http://dev.benjaminritter.com/_images/br_portrait.jpg",
+  "biopic": "http://dev.benjaminritter.com/_images/br_portrait.jpg",
   "welcomeMessage": "I develop websites.",
   "contacts": {
+    "mobile": "(213) 555 - 5785",
+    "twitter": "@benjam1nr",
     "email": "ben@benjaminritter.com",
     "github": "github.com/b-ritter",
     "location": "Los Angeles, CA"
   },
-  "skills": ["JavaScript","HTML/CSS"],
+  "skills": ["JavaScript","HTML/CSS","Adobe Creative Suite","Rhino","Maya","Digital Fabrication"],
   display: function(){
     //locations.push(work_obj.jobs[job].location);
   }
@@ -71,14 +73,16 @@ var education = {
       "location": "Santa Barbara, CA",
       "degree": "BA",
       "dates": "2002",
-      "majors": ["Art"]
+      "majors": ["Art"],
+      "url": "http://www.arts.ucsb.edu/"
     },
     {
       "name": "UCSB",
       "location": "Santa Barbara, CA",
       "degree": "MFA",
       "dates": "2005",
-      "majors": ["Art"]
+      "majors": ["Art"],
+      "url": "http://www.arts.ucsb.edu/"
     }
   ],
   "onlineCourses": [
