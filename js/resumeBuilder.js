@@ -72,28 +72,30 @@ var work = {
       $('#workExperience').append(HTMLworkStart);
       var formattedEmployer = HTMLworkEmployer.replace('%data%', this.jobs[job].employer);
       var formattedTitle = HTMLworkTitle.replace('%data%', this.jobs[job].title);
-      var current_entry = $('.work-entry:last');
-      current_entry.append(formattedEmployer + formattedTitle);
-      var formattedDates = $(HTMLworkDates.replace('%data%', this.jobs[job].dates));
-      current_entry.append(formattedDates);
-      var formattedLocation = $(HTMLworkLocation.replace('%data%', this.jobs[job].location));
-      current_entry.append(formattedLocation);
-      var formattedDescription = $(HTMLworkDescription.replace('%data%', this.jobs[job].description));
-      current_entry.append(formattedDescription);
+      var formattedDates = HTMLworkDates.replace('%data%', this.jobs[job].dates);
+      var formattedLocation = HTMLworkLocation.replace('%data%', this.jobs[job].location);
+      var formattedDescription = HTMLworkDescription.replace('%data%', this.jobs[job].description);
+      $('.work-entry:last').append(
+        formattedEmployer+
+        formattedTitle+
+        formattedDates+
+        formattedLocation+
+        formattedDescription
+      );
     }
   }
 };
 
 var education = {
   "schools": [{
-    "name": "UCSB",
+    "name": "University of California, Santa Barbara",
     "location": "Santa Barbara, CA",
     "degree": "BA",
     "dates": "2002",
     "majors": ["Art"],
     "url": "http://www.arts.ucsb.edu/"
   }, {
-    "name": "UCSB",
+    "name": "University of California, Santa Barbara",
     "location": "Santa Barbara, CA",
     "degree": "MFA",
     "dates": "2005",
@@ -122,7 +124,40 @@ var education = {
     "dates": "2014"
   }],
   display: function() {
-
+    var education = $('#education');
+    for(var school in this.schools ){
+      education.append(HTMLschoolStart);
+      var formattedSchool = HTMLschoolName.replace('%data%',this.schools[school].name);
+      formattedSchool = formattedSchool.replace('#',this.schools[school].url);
+      var formattedDegree = HTMLschoolDegree.replace('%data%',this.schools[school].degree);
+      var formattedDates = HTMLschoolDates.replace('%data%',this.schools[school].dates);
+      var formattedLocation = HTMLschoolLocation.replace('%data%',this.schools[school].location);
+      var formattedMajors = '';
+      this.schools[school].majors.forEach(function(m){
+        formattedMajors += HTMLschoolMajor.replace('%data%',m);
+      });
+      $('.education-entry:last').append(
+        formattedSchool+
+        formattedDegree+
+        formattedDates+
+        formattedMajors+
+        formattedLocation
+      );
+    }
+    education.append(HTMLonlineClasses);
+    for(var course in this.onlineCourses){
+      education.append(HTMLschoolStart);
+      var formattedOnlineCourse = HTMLonlineTitle.replace('%data%',this.onlineCourses[course].title);
+      var formattedOnlineSchool = HTMLonlineSchool.replace('%data%',this.onlineCourses[course].school);
+      var formattedOnlineDates = HTMLonlineDates.replace('%data%',this.onlineCourses[course].dates);
+      var formattedOnlineURL = HTMLonlineURL.replace('%data%',this.onlineCourses[course].url);
+      $('.education-entry:last').append(
+        formattedOnlineCourse+
+        formattedOnlineSchool+
+        formattedOnlineDates+
+        formattedOnlineURL
+      );
+    }
   }
 };
 
