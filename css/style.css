@@ -132,6 +132,9 @@ a {
   background-color: #484848;
 }
 
+#overview {
+  justify-content: flex-start;
+}
 .flex-box {
   display: -webkit-flex;
   display: flex;
@@ -139,6 +142,10 @@ a {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
+}
+
+.skills-box {
+  flex-direction: column;
 }
 
 .center-content {
