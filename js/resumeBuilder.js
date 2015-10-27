@@ -11,26 +11,27 @@ var bio = {
     "github": "github.com/b-ritter",
     "location": "Los Angeles, CA"
   },
-  "skills": ["JavaScript", "HTML/CSS", "Adobe Creative Suite", "Rhino", "Maya"],
-  "display": function() {
-    var header = $('#header');
-    var formattedName = HTMLheaderName.replace('%data%', this.name);
-    var formattedRole = HTMLheaderRole.replace('%data%', this.role);
-    header.find('#nameAndTitle').append(formattedName, formattedRole);
-    var formattedContacts = '';
-    for (var contact in this.contacts) {
-      formattedContacts = HTMLcontactGeneric.replace('%contact%', contact);
-      formattedContacts = formattedContacts.replace('%data%', this.contacts[contact]);
-      header.find('#topContacts').add('#footerContacts').append(formattedContacts);
-    }
-    var formattedBioPic = HTMLbioPic.replace('%data%', this.biopic);
-    header.find('#portrait').html(formattedBioPic);
-    header.find('#skills-container').append(HTMLskillsStart);
-    var skills_len = this.skills.length;
-    for (var i = 0; i < skills_len; i++) {
-      var formattedSkill = HTMLskills.replace('%data%', this.skills[i]);
-      $('#skills').append(formattedSkill).addClass('skills-box');
-    }
+  "skills": ["JavaScript", "HTML/CSS", "Adobe Creative Suite", "Rhino", "Maya"]
+};
+
+bio.display = function() {
+  var header = $('#header');
+  var formattedName = HTMLheaderName.replace('%data%', this.name);
+  var formattedRole = HTMLheaderRole.replace('%data%', this.role);
+  header.find('#nameAndTitle').append(formattedName, formattedRole);
+  var formattedContacts = '';
+  for (var contact in this.contacts) {
+    formattedContacts = HTMLcontactGeneric.replace('%contact%', contact);
+    formattedContacts = formattedContacts.replace('%data%', this.contacts[contact]);
+    header.find('#topContacts').add('#footerContacts').append(formattedContacts);
+  }
+  var formattedBioPic = HTMLbioPic.replace('%data%', this.biopic);
+  header.find('#portrait').html(formattedBioPic);
+  header.find('#skills-container').append(HTMLskillsStart);
+  var skills_len = this.skills.length;
+  for (var i = 0; i < skills_len; i++) {
+    var formattedSkill = HTMLskills.replace('%data%', this.skills[i]);
+    $('#skills').append(formattedSkill).addClass('skills-box');
   }
 };
 
@@ -67,24 +68,25 @@ var work = {
     "title": "Lecturer",
     "description": "Taught sculpture and developed curriculum for advanced undergraduate seminars as part of" +
       "a post-graduate fellowship."
-  }],
-  "display": function() {
-    for (var job in this.jobs) {
-      $('#workExperience').append(HTMLworkStart);
-      var formattedEmployer = HTMLworkEmployer.replace('%data%', this.jobs[job].employer);
-      var formattedTitle = HTMLworkTitle.replace('%data%', this.jobs[job].title);
-      var formattedDates = HTMLworkDates.replace('%data%', this.jobs[job].dates);
-      var formattedLocation = HTMLworkLocation.replace('%data%', this.jobs[job].location);
-      var formattedDescription = HTMLworkDescription.replace('%data%', this.jobs[job].description);
-      $('.work-entry:last').append(
-        formattedEmployer,
-        formattedTitle,
-        formattedDates,
-        formattedLocation,
-        formattedDescription
-      );
-    }
-  }
+  }]
+};
+
+work.display = function() {
+  this.jobs.forEach(function(job){
+    $('#workExperience').append(HTMLworkStart);
+    var formattedEmployer = HTMLworkEmployer.replace('%data%', job.employer);
+    var formattedTitle = HTMLworkTitle.replace('%data%', job.title);
+    var formattedDates = HTMLworkDates.replace('%data%', job.dates);
+    var formattedLocation = HTMLworkLocation.replace('%data%', job.location);
+    var formattedDescription = HTMLworkDescription.replace('%data%', job.description);
+    $('.work-entry:last').append(
+      formattedEmployer,
+      formattedTitle,
+      formattedDates,
+      formattedLocation,
+      formattedDescription
+    );
+  });
 };
 
 var education = {
@@ -123,44 +125,45 @@ var education = {
     "title": "How to Learn Math: For Students",
     "url": "https://verify.class.stanford.edu/SOA/9b173c13ee7d4e17bf8f1f933ed7b02b",
     "dates": "2014"
-  }],
-  "display": function() {
-    var $education = $('#education');
-    for(var school in this.schools ){
-      $education.append(HTMLschoolStart);
-      var formattedSchool = HTMLschoolName.replace('%data%',this.schools[school].name);
-      formattedSchool = formattedSchool.replace('#',this.schools[school].url);
-      var formattedDegree = HTMLschoolDegree.replace('%data%',this.schools[school].degree);
-      var formattedDates = HTMLschoolDates.replace('%data%',this.schools[school].dates);
-      var formattedLocation = HTMLschoolLocation.replace('%data%',this.schools[school].location);
-      var formattedMajors = '';
-      var majors_len = this.schools[school].majors.length;
-      for (var i = 0; i < majors_len; i++){
-        formattedMajors += HTMLschoolMajor.replace('%data%',this.schools[school].majors[i]);
-      };
-      $('.education-entry:last').append(
-        formattedSchool,
-        formattedDegree,
-        formattedDates,
-        formattedMajors,
-        formattedLocation
-      );
+  }]
+};
+
+education.display = function() {
+  var $education = $('#education');
+  this.schools.forEach(function(school){
+    $education.append(HTMLschoolStart);
+    var formattedSchool = HTMLschoolName.replace('%data%',school.name);
+    formattedSchool = formattedSchool.replace('#',school.url);
+    var formattedDegree = HTMLschoolDegree.replace('%data%',school.degree);
+    var formattedDates = HTMLschoolDates.replace('%data%',school.dates);
+    var formattedLocation = HTMLschoolLocation.replace('%data%',school.location);
+    var formattedMajors = '';
+    var majors_len = school.majors.length;
+    for (var i = 0; i < majors_len; i++){
+      formattedMajors += HTMLschoolMajor.replace('%data%',school.majors[i]);
     }
-    $education.append(HTMLonlineClasses);
-    for(var course in this.onlineCourses){
-      $education.append(HTMLschoolStart);
-      var formattedOnlineCourse = HTMLonlineTitle.replace('%data%',this.onlineCourses[course].title);
-      var formattedOnlineSchool = HTMLonlineSchool.replace('%data%',this.onlineCourses[course].school);
-      var formattedOnlineDates = HTMLonlineDates.replace('%data%',this.onlineCourses[course].dates);
-      var formattedOnlineURL = HTMLonlineURL.replace('%data%',this.onlineCourses[course].url);
-      $('.education-entry:last').append(
-        formattedOnlineCourse,
-        formattedOnlineSchool,
-        formattedOnlineDates,
-        formattedOnlineURL
-      );
-    }
-  }
+    $('.education-entry:last').append(
+      formattedSchool,
+      formattedDegree,
+      formattedDates,
+      formattedMajors,
+      formattedLocation
+    );
+  });
+  $education.append(HTMLonlineClasses);
+  this.onlineCourses.forEach(function(onlineCourse){
+    $education.append(HTMLschoolStart);
+    var formattedOnlineCourse = HTMLonlineTitle.replace('%data%',onlineCourse.title);
+    var formattedOnlineSchool = HTMLonlineSchool.replace('%data%',onlineCourse.school);
+    var formattedOnlineDates = HTMLonlineDates.replace('%data%',onlineCourse.dates);
+    var formattedOnlineURL = HTMLonlineURL.replace('%data%',onlineCourse.url);
+    $('.education-entry:last').append(
+      formattedOnlineCourse,
+      formattedOnlineSchool,
+      formattedOnlineDates,
+      formattedOnlineURL
+    );
+  });
 };
 
 var projects = {
@@ -188,26 +191,27 @@ var projects = {
     "location": "New York, NY",
     "description": "Designed and developed website for fine art finishing company.",
     "images": ["http://dev.benjaminritter.com/images/alchemy-sm-1x.jpg"]
-  }],
-  "display": function() {
-    for (var proj in this.projects) {
-      $('#projects').append(HTMLprojectStart);
-      var formattedTitle = $(HTMLprojectTitle.replace('%data%', this.projects[proj].title));
-      var current_entry = $('.project-entry:last');
-      current_entry.append(formattedTitle);
-      var formattedDates = $(HTMLprojectDates.replace('%data%', this.projects[proj].dates));
-      current_entry.append(formattedDates);
-      var formattedDescription = $(HTMLprojectDescription.replace('%data%', this.projects[proj].description));
-      current_entry.append(formattedDescription);
-      var images_list_len = this.projects[proj].images.length;
-      if (this.projects[proj].images.length > 0) {
-        for (var i = 0; i < images_list_len; i++) {
-          var formattedProjectImage = $(HTMLprojectImage.replace('%data%', this.projects[proj].images[0]));
-          current_entry.append(formattedProjectImage);
-        }
+  }]
+};
+
+projects.display =  function() {
+  this.projects.forEach(function(proj){
+    $('#projects').append(HTMLprojectStart);
+    var formattedTitle = $(HTMLprojectTitle.replace('%data%', proj.title));
+    var current_entry = $('.project-entry:last');
+    current_entry.append(formattedTitle);
+    var formattedDates = $(HTMLprojectDates.replace('%data%', proj.dates));
+    current_entry.append(formattedDates);
+    var formattedDescription = $(HTMLprojectDescription.replace('%data%', proj.description));
+    current_entry.append(formattedDescription);
+    var images_list_len = proj.images.length;
+    if (proj.images.length > 0) {
+      for (var i = 0; i < images_list_len; i++) {
+        var formattedProjectImage = $(HTMLprojectImage.replace('%data%', proj.images[0]));
+        current_entry.append(formattedProjectImage);
       }
     }
-  }
+  });
 };
 
 work.display();
