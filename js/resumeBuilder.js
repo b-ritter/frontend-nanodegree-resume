@@ -13,16 +13,16 @@ var bio = {
   },
   "skills": ["JavaScript", "HTML/CSS", "Adobe Creative Suite", "Rhino", "Maya"],
   display: function() {
+    var header = $('#header');
     var formattedName = HTMLheaderName.replace('%data%', this.name);
     var formattedRole = HTMLheaderRole.replace('%data%', this.role);
+    header.find('#nameAndTitle').append(formattedName, formattedRole);
     var formattedContacts = '';
-    var header = $('#header');
     for (var contact in this.contacts) {
       formattedContacts = HTMLcontactGeneric.replace('%contact%', contact);
       formattedContacts = formattedContacts.replace('%data%', this.contacts[contact]);
       header.find('#topContacts').add('#footerContacts').append(formattedContacts);
     }
-    header.prepend(formattedName, formattedRole);
     var formattedBioPic = HTMLbioPic.replace('%data%', this.biopic);
     header.find('#portrait').html(formattedBioPic);
     header.find('#skills-container').append(HTMLskillsStart);

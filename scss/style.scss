@@ -1,0 +1,255 @@
+$special-font-color: #26d7b5;
+$main-text-color: #000;
+$padding-set: 0 5%;
+
+body,
+div,
+ul,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding:0;
+  margin:0;
+  font-family: "Lato", sans-serif;
+}
+
+.clear-fix {
+  overflow: auto;
+}
+
+.education-entry,
+.work-entry,
+.project-entry {
+  padding: $padding-set;
+}
+
+html {
+    background-image: url(/_images/background.jpg);
+}
+
+h1 {
+  font-size: 2em;
+  color: $special-font-color;
+  display: inline;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 24px;
+  color: $main-text-color;
+  line-height: 29px;
+  padding: $padding-set;
+}
+
+#nameAndTitle {
+  justify-content: space-between;
+}
+
+.title {
+  float: right;
+  display:inline-block;
+  line-height: 2em;
+  vertical-align: bottom;
+  padding: 0;
+  color: $main-text-color;
+}
+
+h3 {
+  font-style: italic;
+  font-size: 20px;
+  color: $main-text-color;
+  line-height: 22px;
+  padding: $padding-set;
+  padding-top: 1em;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 14px;
+  color: $special-font-color;
+  line-height: 17px;
+}
+
+.date-text {
+  font-style: italic;
+  font-size: 14px;
+  color: black;
+  line-height: 16px;
+  float: left;
+}
+
+.location-text {
+  font-style: italic;
+  font-size: 14px;
+  color: #999;
+  line-height: 16px;
+  float: right;
+
+}
+
+p {
+  font-size: 1.125em;
+  color: $main-text-color;
+  line-height: 21px;
+}
+
+a {
+  color: $main-text-color;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 1.25em;
+  margin-top: 10px;
+  display: block;
+}
+
+.welcome-message {
+  font-style: italic;
+  font-size: 18px;
+  color: #f3f3f3;
+  line-height: 28px;
+}
+
+#topContacts {
+  border-top: .2em solid white;
+  margin-top: .2em;
+}
+
+#footerContacts {
+  background-color: $main-text-color;
+}
+
+#skills-h3 {
+  color: $special-font-color;
+  display: none;
+  padding: 0;
+}
+
+#skills {
+  padding: 0;
+}
+
+.orange {
+  background-color: $special-font-color;
+}
+
+.orange-text {
+  color: $special-font-color;
+}
+
+.white-text {
+  font-weight: bold;
+  color: #fff;
+}
+
+.block {
+  background-color: #fff;
+  padding: 2em 0 2em;
+  clear: both;
+  border-bottom: 2px solid black;
+}
+
+#header {
+  background: $main-text-color;
+}
+
+#overview {
+  justify-content: flex-start;
+}
+
+.flex-box {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+#portrait {
+    width: 25%;
+}
+
+.biopic {
+    max-width: 100%;
+}
+
+#skills-container {
+  width: 73%;
+  margin-left: 2%;
+}
+
+.skills-box {
+  flex-direction: column;
+}
+
+.center-content {
+  padding: 2.5% 5%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+    font-size: .8em;
+}
+
+span {
+  padding: 5px;
+}
+
+#lets-connect {
+  text-align: center;
+}
+
+/* Media queries to handle various device widths */
+
+@media only screen and (max-width: 1024px) {
+  #lets-connect {
+    margin-top: 5%;
+  }
+}
+
+@media only screen and (max-width:900px) {
+  .biopic {
+    width: 175px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  #lets-connect {
+    margin-top: 10%;
+  }
+  .biopic {
+    width: 150px;
+  }
+  .welcome-message {
+    display: none;
+  }
+}
+
+#map {
+  display: block;
+  height: 100%;
+  margin: 0 5%;
+}
+
+#mapDiv {
+  height: 400px;
+  width: 100%;
+  padding-bottom: 5%;
+}
+
+@media only screen and (min-width: 750px) {
+  #skills-h3,
+  .biopic {
+    display: block;
+  }
+}

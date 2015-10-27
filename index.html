@@ -6,12 +6,13 @@
   <script src="js/jQuery.js"></script>
   <script src="js/helper.js"></script>
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width">
 </head>
 <body>
   <div id="main">
     <div id="header" class="center-content clear-fix">
+      <div id="nameAndTitle" class="flex-box"></div>
       <ul id="topContacts" class="flex-box"></ul>
       <div id="overview" class="flex-box">
         <div id="portrait" class="flex-item"></div>
@@ -19,19 +20,19 @@
       </div>
     </div>
     <div style="clear: both;"></div>
-    <div id="workExperience" class="gray">
+    <div id="workExperience" class="block">
       <h2>Work Experience</h2>
     </div>
-    <div id="projects">
+    <div id="projects" class="block">
       <h2>Projects</h2>
     </div>
-    <div id="education" class="gray">
+    <div id="education" class="block">
       <h2>Education</h2>
     </div>
     <div id="mapDiv">
       <h2>Where I've Lived and Worked</h2>
     </div>
-    <div id="lets-connect" class="dark-gray">
+    <div id="lets-connect">
       <h2 class="orange center-text">Let's Connect</h2>
         <ul id="footerContacts" class="flex-box">
       </ul>
